@@ -1,4 +1,4 @@
-package org.jetbrains.plugins.template
+package com.github.julioxx22.magento2omicron
 
 import com.intellij.AbstractBundle
 import org.jetbrains.annotations.NonNls
