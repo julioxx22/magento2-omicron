@@ -13,20 +13,45 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
+        <applicationConfigurable parentId="tools" instance="org.intellij.sdk.settings.AppSettingsConfigurable"
+                                 id="org.intellij.sdk.settings.AppSettingsConfigurable"
+                                 displayName="Magento 2 Omicron"/>
+        <applicationService serviceImplementation="org.intellij.sdk.settings.AppSettingsState"/>
+        <notificationGroup id="Magento 2 Omicron Notification Group" displayType="BALLOON" key="notification.group.magento2.execution.results"/>
     </extensions>
 
     <actions>
-        <!-- Add your actions here -->
-        <action id="PopupDialogAction" class="PopupDialogAction" text="Pop Dialog Action"
-                description="SDK action example">
-            <override-text place="MainMenu" text="Pop Dialog Action"/>
-            <keyboard-shortcut first-keystroke="control alt A" second-keystroke="C" keymap="$default"/>
-            <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
-            <add-to-group group-id="ToolsMenu" anchor="first"/>
-        </action>
-        <action id="ToolbarDialogAction" class="ToolbarDialogAction" text="Toolbar Dialog Action"
-                description="Toolbar Dialog Action  test" icon="/icons/magento2.svg">
-            <add-to-group group-id="ToolbarRunGroup" anchor="first"/>
-        </action>
+        <group class="com.magento2omicron.groups.Magento2Omicron" id="MagentoUtilitiesFileActionGroup" text="Magento 2 Utilities" popup="true">
+            <action class="com.magento2omicron.actions.RecompileStaticFileAction" id="RecreateStatic" text="Recompile Currently Open File">
+                <keyboard-shortcut keymap="$default" first-keystroke="control alt R" />
+            </action>
+            <action class="com.magento2omicron.actions.ManageClassInterceptor" id="ManageInterceptor" text="Delete Class Interceptor" />
+            <add-to-group group-id="ProjectViewPopupMenu"/>
+            <add-to-group group-id="EditorTabPopupMenu" anchor="last"/>
+            <add-to-group group-id="ToolsBasicGroup"    anchor="last"/>
+            <add-to-group group-id="ToolbarFindGroup"   anchor="last"/>
+
+            <group class="com.intellij.openapi.actionSystem.DefaultActionGroup" id="MagentoUtilitiesCommandsSubGroup" text="Run Magento Command" popup="true">
+                <action class="com.magento2omicron.actions.commands.FlushCache"     id="FlushCacheCommand"     text="Flush Cache" />
+                <action class="com.magento2omicron.actions.commands.SetupUpgrade"   id="SetupUpgradeCommand"   text="Run Setup Upgrade" />
+                <action class="com.magento2omicron.actions.commands.DiCompile"      id="DiCompileCommand"      text="Run DI Compile" />
+                <action class="com.magento2omicron.actions.commands.ReindexSystem"  id="ReindexSystemCommand"  text="Reindex System" />
+                <action class="com.magento2omicron.actions.commands.ResetIndexers"  id="ResetIndexersCommand"  text="Reset Indexers" />
+                <action class="com.magento2omicron.actions.commands.DeveloperMode"  id="DeveloperModeCommand"  text="Enable Developer Mode" />
+                <action class="com.magento2omicron.actions.commands.ProductionMode" id="ProductionModeCommand" text="Enable Production Mode" />
+            </group>
+
+        </group>
+<!--        <action id="PopupDialogAction" class="PopupDialogAction" text="Pop Dialog Action"-->
+<!--                description="SDK action example">-->
+<!--            <override-text place="MainMenu" text="Pop Dialog Action"/>-->
+<!--            <keyboard-shortcut first-keystroke="control alt A" second-keystroke="C" keymap="$default"/>-->
+<!--            <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>-->
+<!--            <add-to-group group-id="ToolsMenu" anchor="first"/>-->
+<!--        </action>-->
+<!--        <action id="ToolbarDialogAction" class="ToolbarDialogAction" text="Toolbar Dialog Action"-->
+<!--                description="Toolbar Dialog Action  test" icon="/icons/magento2.svg">-->
+<!--            <add-to-group group-id="ToolbarRunGroup" anchor="first"/>-->
+<!--        </action>-->
     </actions>
 </idea-plugin>
