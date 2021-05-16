@@ -18,6 +18,7 @@
                                  displayName="Magento 2 Omicron"/>
         <applicationService serviceImplementation="org.intellij.sdk.settings.AppSettingsState"/>
         <notificationGroup id="Magento 2 Omicron Notification Group" displayType="BALLOON" key="notification.group.magento2.execution.results"/>
+        <statusBarWidgetFactory id="magento2OmicronWidget" implementation="com.magento2omicron.status.Magento2OmicronWidgetFactory" order="last"/>
     </extensions>
 
     <actions>

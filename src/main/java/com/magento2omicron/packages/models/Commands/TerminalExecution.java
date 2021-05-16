@@ -51,7 +51,7 @@ public class TerminalExecution {
                     ProcessHandler processHandler;
                     try {
                         processHandler = new OSProcessHandler(generalCommandLine);
-                        final ConsoleView consoleView = TextConsoleBuilderFactory.getInstance().createBuilder(project).getConsole();
+                        ConsoleView consoleView = TextConsoleBuilderFactory.getInstance().createBuilder(project).getConsole();
                         processHandler.addProcessListener(new ProcessAdapter() {
 
                             String lastCommand = "";
